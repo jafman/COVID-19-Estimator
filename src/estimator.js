@@ -49,7 +49,7 @@ const covid19ImpactEstimator = (data) => {
   // svrDollarsInFlight = parseFloat(svrDollarsInFlight.toFixed(2));
   svrDollarsInFlight = Math.floor(svrDollarsInFlight); */
 
-  return {
+  /* return {
     data: { ...data }, // the input data you got
     estimate: {
       impact: {
@@ -72,6 +72,16 @@ const covid19ImpactEstimator = (data) => {
       } // your severe case estimation
     }
 
+  }; */
+  return {
+    impact: {
+      currentlyInfected,
+      infectionsByRequestedTime
+    },
+    severeImpact: {
+      currentlyInfected: svrCurrentlyInfected,
+      infectionsByRequestedTime: svrInfectionsByRequestedTime
+    }
   };
 };
 
