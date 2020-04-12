@@ -49,26 +49,26 @@ const covid19ImpactEstimator = (data) => {
 
   return {
     data: { ...data }, // the input data you got
-
-    impact: {
-      currentlyInfected,
-      infectionsByRequestedTime,
-      severeCasesByRequestedTime,
-      hospitalBedsByRequestedTime,
-      casesForICUByRequestedTime,
-      casesForVentilatorsByRequestedTime,
-      dollarsInFlight
-    }, // your best case estimation
-    severeImpact: {
-      currentlyInfected: svrCurrentlyInfected,
-      infectionsByRequestedTime: svrInfectionsByRequestedTime,
-      severeCasesByRequestedTime: svrSevereCasesByRequestedTime,
-      hospitalBedsByRequestedTime: svrBedsByRequestedTime,
-      casesForICUByRequestedTime: svrCasesForICUByRequestedTime,
-      casesForVentilatorsByRequestedTime: svrCasesForVentilatorsByRequestedTime,
-      dollarsInFlight: svrDollarsInFlight
-    } // your severe case estimation
-
+    estimate: {
+      impact: {
+        currentlyInfected,
+        infectionsByRequestedTime,
+        severeCasesByRequestedTime,
+        hospitalBedsByRequestedTime,
+        casesForICUByRequestedTime,
+        casesForVentilatorsByRequestedTime,
+        dollarsInFlight
+      }, // your best case estimation
+      severeImpact: {
+        currentlyInfected: svrCurrentlyInfected,
+        infectionsByRequestedTime: svrInfectionsByRequestedTime,
+        severeCasesByRequestedTime: svrSevereCasesByRequestedTime,
+        hospitalBedsByRequestedTime: svrBedsByRequestedTime,
+        casesForICUByRequestedTime: svrCasesForICUByRequestedTime,
+        casesForVentilatorsByRequestedTime: svrCasesForVentilatorsByRequestedTime,
+        dollarsInFlight: svrDollarsInFlight
+      } // your severe case estimation
+    }
 
   };
 };
