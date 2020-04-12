@@ -18,38 +18,38 @@ const covid19ImpactEstimator = (data) => {
   const infectionsByRequestedTime = currentlyInfected * (2 ** parseInt(numDays / 3, 10));
   const svrInfectionsByRequestedTime = svrCurrentlyInfected * (2 ** parseInt(numDays / 3, 10));
 
-  const severeCasesByRequestedTime = parseInt(0.15 * infectionsByRequestedTime, 10);
+  const severeCasesByRequestedTime = Math.trunc(0.15 * infectionsByRequestedTime);
 
-  const svrSevereCasesByRequestedTime = parseInt(
-    0.15 * svrInfectionsByRequestedTime, 10
+  const svrSevereCasesByRequestedTime = Math.trunc(
+    0.15 * svrInfectionsByRequestedTime
   );
 
-  const hospitalBedsByRequestedTime = parseInt(0.35 * totalBed, 10) - severeCasesByRequestedTime;
+  const hospitalBedsByRequestedTime = Math.trunc(0.35 * totalBed) - severeCasesByRequestedTime;
 
 
-  const svrBedsByRequestedTime = parseInt(0.35 * totalBed, 10) - svrSevereCasesByRequestedTime;
+  const svrBedsByRequestedTime = Math.trunc(0.35 * totalBed) - svrSevereCasesByRequestedTime;
 
 
-  const casesForICUByRequestedTime = parseInt(0.05 * infectionsByRequestedTime, 10);
-  const svrCasesForICUByRequestedTime = parseInt(
-    0.05 * svrInfectionsByRequestedTime, 10
+  const casesForICUByRequestedTime = Math.trunc(0.05 * infectionsByRequestedTime);
+  const svrCasesForICUByRequestedTime = Math.trunc(
+    0.05 * svrInfectionsByRequestedTime
   );
 
-  const casesForVentilatorsByRequestedTime = parseInt(
-    0.02 * infectionsByRequestedTime, 10
+  const casesForVentilatorsByRequestedTime = Math.trunc(
+    0.02 * infectionsByRequestedTime
   );
 
-  const svrCasesForVentilatorsByRequestedTime = parseInt(
-    0.02 * svrInfectionsByRequestedTime, 10
+  const svrCasesForVentilatorsByRequestedTime = Math.trunc(
+    0.02 * svrInfectionsByRequestedTime
   );
 
   dollarsInFlight = infectionsByRequestedTime * avgIncPop * avgIncome * numDays;
   // dollarsInFlight = parseFloat(dollarsInFlight.toFixed(2));
-  dollarsInFlight = parseInt(dollarsInFlight, 10);
+  dollarsInFlight = Math.trunc(dollarsInFlight);
 
   svrDollarsInFlight = svrInfectionsByRequestedTime * avgIncPop * avgIncome * numDays;
   // svrDollarsInFlight = parseFloat(svrDollarsInFlight.toFixed(2));
-  svrDollarsInFlight = parseInt(svrDollarsInFlight, 10);
+  svrDollarsInFlight = Math.trunc(svrDollarsInFlight);
 
   return {
     // data: { ...data },
