@@ -15,43 +15,41 @@ const covid19ImpactEstimator = (data) => {
     numDays *= 30;
   }
 
-  const infectionsByRequestedTime = currentlyInfected * (2 ** Math.floor(numDays / 3));
-  const svrInfectionsByRequestedTime = svrCurrentlyInfected * (2 ** Math.floor(numDays / 3));
+  const infectionsByRequestedTime = currentlyInfected * (2 ** parseInt(numDays / 3, 10));
+  const svrInfectionsByRequestedTime = svrCurrentlyInfected * (2 ** parseInt(numDays / 3, 10));
 
-  const severeCasesByRequestedTime = Math.floor(0.15 * infectionsByRequestedTime);
+  const severeCasesByRequestedTime = parseInt(0.15 * infectionsByRequestedTime, 10);
 
-  const svrSevereCasesByRequestedTime = Math.floor(
-    0.15 * svrInfectionsByRequestedTime
+  const svrSevereCasesByRequestedTime = parseInt(
+    0.15 * svrInfectionsByRequestedTime, 10
   );
 
-  const hospitalBedsByRequestedTime = Math.round((0.35 * totalBed)
-  - (0.15 * infectionsByRequestedTime)) + 1;
+  const hospitalBedsByRequestedTime = parseInt(0.35 * totalBed, 10) - severeCasesByRequestedTime;
 
 
-  const svrBedsByRequestedTime = Math.round((0.35 * totalBed)
-  - (0.15 * svrInfectionsByRequestedTime)) + 1;
+  const svrBedsByRequestedTime = parseInt(0.35 * totalBed, 10) - svrSevereCasesByRequestedTime;
 
 
-  const casesForICUByRequestedTime = Math.floor(0.05 * infectionsByRequestedTime);
-  const svrCasesForICUByRequestedTime = Math.floor(
-    0.05 * svrInfectionsByRequestedTime
+  const casesForICUByRequestedTime = parseInt(0.05 * infectionsByRequestedTime, 10);
+  const svrCasesForICUByRequestedTime = parseInt(
+    0.05 * svrInfectionsByRequestedTime, 10
   );
 
-  const casesForVentilatorsByRequestedTime = Math.floor(
-    0.02 * infectionsByRequestedTime
+  const casesForVentilatorsByRequestedTime = parseInt(
+    0.02 * infectionsByRequestedTime, 10
   );
 
-  const svrCasesForVentilatorsByRequestedTime = Math.floor(
-    0.02 * svrInfectionsByRequestedTime
+  const svrCasesForVentilatorsByRequestedTime = parseInt(
+    0.02 * svrInfectionsByRequestedTime, 10
   );
 
   dollarsInFlight = infectionsByRequestedTime * avgIncPop * avgIncome * numDays;
   // dollarsInFlight = parseFloat(dollarsInFlight.toFixed(2));
-  dollarsInFlight = Math.floor(dollarsInFlight);
+  dollarsInFlight = parseInt(dollarsInFlight, 10);
 
   svrDollarsInFlight = svrInfectionsByRequestedTime * avgIncPop * avgIncome * numDays;
   // svrDollarsInFlight = parseFloat(svrDollarsInFlight.toFixed(2));
-  svrDollarsInFlight = Math.floor(svrDollarsInFlight);
+  svrDollarsInFlight = parseInt(svrDollarsInFlight, 10);
 
   return {
     // data: { ...data },
