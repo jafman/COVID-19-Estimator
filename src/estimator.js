@@ -15,8 +15,8 @@ const covid19ImpactEstimator = (data) => {
     numDays *= 30;
   }
 
-  const infectionsByRequestedTime = currentlyInfected * (2 ** parseInt(numDays / 3, 10));
-  const svrInfectionsByRequestedTime = svrCurrentlyInfected * (2 ** parseInt(numDays / 3, 10));
+  const infectionsByRequestedTime = currentlyInfected * (2 ** Math.trunc(numDays / 3));
+  const svrInfectionsByRequestedTime = svrCurrentlyInfected * (2 ** Math.trunc(numDays / 3));
 
   const severeCasesByRequestedTime = Math.trunc(0.15 * infectionsByRequestedTime);
 
