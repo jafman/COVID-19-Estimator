@@ -44,7 +44,7 @@ const covid19ImpactEstimator = (data) => {
   );
 
   dollarsInFlight = (infectionsByRequestedTime * avgIncPop * avgIncome) / numDays;
-  // dollarsInFlight = parseFloat(dollarsInFlight.toFixed(2));
+  // dollarsInFlight_ = parseFloat(dollarsInFlight.toFixed(2));
   dollarsInFlight = Math.trunc(dollarsInFlight);
 
   svrDollarsInFlight = (svrInfectionsByRequestedTime * avgIncPop * avgIncome) / numDays;
