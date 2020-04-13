@@ -1,3 +1,4 @@
+const toWholeNumber = (number) => parseFloat(number.toString().split('.')[0]);
 const covid19ImpactEstimator = (data) => {
   const currentlyInfected = data.reportedCases * 10;
   const svrCurrentlyInfected = data.reportedCases * 50;
@@ -25,13 +26,15 @@ const covid19ImpactEstimator = (data) => {
   );
 
   // const hospitalBedsByRequestedTime = Math.trunc(0.35 * totalBed) - severeCasesByRequestedTime;
-  const hospitalBedsByRequestedTime = Math.ceil(0.35 * totalBed)
-  - Math.ceil(0.15 * infectionsByRequestedTime);
+  let hospitalBedsByRequestedTime = parseFloat(0.35 * parseFloat(totalBed))
+  - parseFloat(0.15 * parseFloat(infectionsByRequestedTime));
+  hospitalBedsByRequestedTime = toWholeNumber(hospitalBedsByRequestedTime);
 
 
   // const svrBedsByRequestedTime = Math.trunc(0.35 * totalBed) - svrSevereCasesByRequestedTime;
-  const svrBedsByRequestedTime = Math.ceil(0.35 * totalBed)
-  - Math.ceil(0.15 * svrInfectionsByRequestedTime);
+  let svrBedsByRequestedTime = parseFloat(0.35 * parseFloat(totalBed))
+  - parseFloat(0.15 * parseFloat(svrInfectionsByRequestedTime));
+  svrBedsByRequestedTime = toWholeNumber(svrBedsByRequestedTime);
 
 
   const casesForICUByRequestedTime = Math.trunc(0.05 * infectionsByRequestedTime);
