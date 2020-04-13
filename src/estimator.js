@@ -1,4 +1,5 @@
 const toWholeNumber = (number) => parseFloat(number.toString().split('.')[0]);
+
 const covid19ImpactEstimator = (data) => {
   const currentlyInfected = data.reportedCases * 10;
   const svrCurrentlyInfected = data.reportedCases * 50;
