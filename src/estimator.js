@@ -31,7 +31,6 @@ const covid19ImpactEstimator = (data) => {
   hospitalBedsByRequestedTime = toWholeNumber(hospitalBedsByRequestedTime);
 
 
-  // const svrBedsByRequestedTime = Math.trunc(0.35 * totalBed) - svrSevereCasesByRequestedTime;
   let svrBedsByRequestedTime = parseFloat(0.35 * parseFloat(totalBed))
   - parseFloat(0.15 * parseFloat(svrInfectionsByRequestedTime));
   svrBedsByRequestedTime = toWholeNumber(svrBedsByRequestedTime);
